@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Come and Rest — a quiet place for weary shepherds</title>
+<meta name="description" content="A quiet, confidential place where pastors, missionaries, ministry leaders, and their families can talk, be prayed for, and be encouraged. Not counseling. Just one shepherd walking alongside another." />
+
+<!-- Fonts: Newsreader, a warm literary serif set like a handwritten letter -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
+
+<style>
+  /* ---------- Tokens ---------- */
+  :root{
+    --paper:      #ECE6DA;   /* warm lampshade linen — dimmer, softer than a bright cream */
+    --paper-deep: #E3DACB;   /* the dusk base of the opening */
+    --paper-lift: #F3EEE4;   /* raised cards / video frame */
+    --ink:        #322E27;   /* warm near-black, never pure black */
+    --ink-soft:   #5C5648;   /* secondary text */
+    --ink-faint:  #8A8272;   /* labels, captions */
+    --sage:       #6F7A5C;   /* dusty pasture green — the one accent */
+    --sage-deep:  #515A40;
+    --line:       #CFC6B4;   /* faint horizon rules */
+    --glow:       #E7C088;   /* warm amber — the lamp in the corner */
+
+    --measure: 34rem;        /* a letter's width */
+    --rhythm: clamp(5.5rem, 12vh, 9rem);  /* space between sections */
+
+    --serif: "Newsreader", Georgia, "Times New Roman", serif;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html{ scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior: auto; } }
+
+  body{
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(1.06rem, 0.6rem + 0.9vw, 1.2rem);
+    line-height: 1.78;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection{ background: rgba(111,122,92,.22); }
+
+  a{ color: inherit; }
+
+  /* shared layout container */
+  .hold{
+    width: min(var(--measure), calc(100% - 2.75rem));
+    margin-inline: auto;
+  }
+
+  /* small letter-spaced eyebrow labels */
+  .eyebrow{
+    font-size: .74rem;
+    letter-spacing: .26em;
+    text-transform: uppercase;
+    color: var(--sage-deep);
+    font-weight: 500;
+    margin: 0 0 1.4rem;
+  }
+
+  /* a soft hand-drawn horizon between sections */
+  .horizon{
+    width: min(var(--measure), calc(100% - 2.75rem));
+    margin: var(--rhythm) auto;
+    height: 1px;
+    border: 0;
+    background: linear-gradient(90deg, transparent, var(--line) 18%, var(--line) 82%, transparent);
+    position: relative;
+  }
+  .horizon::after{
+    content:"";
+    position:absolute; left:50%; top:50%;
+    width: 5px; height: 5px; margin:-2.5px 0 0 -2.5px;
+    border-radius:50%;
+    background: var(--sage);
+    opacity:.5;
+  }
+
+  /* ---------- Quiet top bar ---------- */
+  header.bar{
+    position: sticky; top: 0; z-index: 20;
+    display:flex; align-items:center; justify-content:space-between;
+    gap:1rem;
+    padding: 1.05rem clamp(1.25rem, 4vw, 2.5rem);
+    background: transparent;
+    transition: background .5s ease, box-shadow .5s ease;
+  }
+  header.bar.settled{
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(7px);
+    box-shadow: 0 1px 0 var(--line);
+  }
+  .mark{
+    font-size: 1.02rem;
+    letter-spacing: .02em;
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .mark span{ color: var(--ink-faint); font-weight: 400; }
+  nav.links{ display:flex; gap: clamp(1rem, 3vw, 2rem); }
+  nav.links a{
+    font-size: .92rem;
+    color: var(--ink-soft);
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
+    transition: color .3s ease, border-color .3s ease;
+  }
+  nav.links a:hover, nav.links a:focus-visible{ color: var(--sage-deep); border-color: var(--sage); }
+  @media (max-width: 640px){ nav.links{ display:none; } }
+
+  /* ---------- Hero: a quiet room at dusk ---------- */
+  .hero{
+    position: relative;
+    min-height: 64vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    /* To use a real photograph later, replace the two gradients below with:
+       background-image: url('your-photo.jpg'); background-size: cover; background-position: center; */
+    background:
+      radial-gradient(120% 90% at 78% 108%, rgba(231,192,136,.55), rgba(231,192,136,0) 46%),
+      linear-gradient(180deg, var(--paper) 0%, var(--paper-deep) 62%, #DBD0BE 100%);
+    margin-top: -4.4rem;   /* let content rise behind the transparent bar */
+  }
+  /* faraway hills — the pasture, barely there */
+  .hero::before{
+    content:"";
+    position:absolute; left:0; right:0; bottom:0; height: 34%;
+    background:
+      radial-gradient(140% 100% at 30% 100%, rgba(81,90,64,.20), transparent 60%),
+      radial-gradient(120% 100% at 82% 100%, rgba(81,90,64,.16), transparent 58%);
+    -webkit-mask-image: linear-gradient(180deg, transparent, #000 40%);
+            mask-image: linear-gradient(180deg, transparent, #000 40%);
+  }
+  /* the warm lamp low on the horizon */
+  .hero .lamp{
+    position:absolute; right: 14%; bottom: 20%;
+    width: 12px; height: 12px; border-radius:50%;
+    background: var(--glow);
+    box-shadow: 0 0 60px 34px rgba(231,192,136,.55);
+    opacity:.9;
+    animation: breathe 9s ease-in-out infinite;
+  }
+  @keyframes breathe{ 0%,100%{ opacity:.72; } 50%{ opacity:1; } }
+  @media (prefers-reduced-motion: reduce){ .hero .lamp{ animation:none; } }
+
+  .hero .hold{ position: relative; padding-block: clamp(3rem, 8vh, 5rem); }
+  .hero h1{
+    font-weight: 300;
+    font-size: clamp(2.1rem, 1rem + 4.3vw, 3.6rem);
+    line-height: 1.16;
+    letter-spacing: -0.01em;
+    margin: 0 0 1.6rem;
+    max-width: 20ch;
+    text-wrap: balance;
+  }
+  .hero h1 em{
+    font-style: italic;
+    color: var(--sage-deep);
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex; align-items:center; gap:.6rem;
+    font-family: var(--serif);
+    font-size: 1.02rem;
+    color: var(--paper-lift);
+    background: var(--sage-deep);
+    text-decoration:none;
+    padding: .72rem 1.5rem;
+    border-radius: 999px;
+    border: 1px solid var(--sage-deep);
+    transition: background .3s ease, transform .3s ease, box-shadow .3s ease;
+  }
+  .btn:hover, .btn:focus-visible{
+    background: var(--sage);
+    box-shadow: 0 8px 24px rgba(81,90,64,.22);
+    transform: translateY(-1px);
+  }
+  .btn .arrow{ transition: transform .3s ease; }
+  .btn:hover .arrow{ transform: translateX(3px); }
+
+  .btn.quiet{
+    background: transparent;
+    color: var(--sage-deep);
+    border-color: var(--line);
+  }
+  .btn.quiet:hover, .btn.quiet:focus-visible{
+    background: transparent;
+    border-color: var(--sage);
+    box-shadow:none;
+  }
+
+  /* ---------- Prose blocks ---------- */
+  section{ scroll-margin-top: 5rem; }
+  .lede{ font-size: 1.28em; line-height: 1.6; color: var(--ink); font-weight: 400; }
+  p{ margin: 0 0 1.15rem; }
+  p:last-child{ margin-bottom: 0; }
+  .soft{ color: var(--ink-soft); }
+
+  .scripture{
+    font-style: italic;
+    font-size: 1.3em;
+    line-height: 1.5;
+    color: var(--sage-deep);
+    border-left: 2px solid var(--sage);
+    padding-left: 1.25rem;
+    margin: 2rem 0;
+  }
+  .scripture cite{ display:block; font-style: normal; font-size: .72em; letter-spacing:.12em; text-transform:uppercase; color: var(--ink-faint); margin-top:.7rem; }
+
+  h2.head{
+    font-weight: 400;
+    font-size: clamp(1.7rem, 1rem + 2.4vw, 2.35rem);
+    line-height: 1.22;
+    letter-spacing: -0.01em;
+    margin: 0 0 1.4rem;
+    text-wrap: balance;
+  }
+
+  /* ---------- The welcome (video) ---------- */
+  .frame{
+    width: min(46rem, calc(100% - 2.75rem));
+    margin: 0 auto;
+    aspect-ratio: 16 / 9;
+    border-radius: 10px;
+    background:
+      radial-gradient(90% 120% at 50% 40%, rgba(231,192,136,.16), transparent 60%),
+      var(--paper-lift);
+    border: 1px solid var(--line);
+    display: block;
+    object-fit: cover;
+    overflow: hidden;
+    color: var(--ink-soft);
+    text-align:center;
+    box-shadow: 0 24px 60px -40px rgba(50,46,39,.5);
+  }
+
+  /* ---------- Is / is not ---------- */
+  .two{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(1.5rem, 5vw, 3.5rem);
+    width: min(46rem, calc(100% - 2.75rem));
+    margin-inline:auto;
+  }
+  @media (max-width: 620px){ .two{ grid-template-columns: 1fr; gap: 2.5rem; } }
+  .col h3{
+    font-weight: 500;
+    font-size: 1.02rem;
+    letter-spacing: .04em;
+    margin: 0 0 1.1rem;
+    color: var(--ink);
+  }
+  .plain{ list-style:none; margin:0; padding:0; }
+  .plain li{
+    position: relative;
+    padding: .38rem 0 .38rem 1.5rem;
+    color: var(--ink-soft);
+    border-bottom: 1px solid transparent;
+  }
+  .plain li::before{
+    position:absolute; left:0; top:.38rem;
+    color: var(--sage);
+  }
+  .plain.is li::before{ content:"—"; color: var(--sage); }
+  .plain.isnot li{ color: var(--ink-faint); }
+  .plain.isnot li::before{ content:"·"; font-size:1.4em; line-height:1; top:.3rem; color: var(--line); }
+
+  /* ---------- FAQ ---------- */
+  .faq{ width: min(var(--measure), calc(100% - 2.75rem)); margin-inline:auto; }
+  details{
+    border-bottom: 1px solid var(--line);
+  }
+  details summary{
+    list-style:none;
+    cursor:pointer;
+    padding: 1.15rem 2rem 1.15rem 0;
+    position: relative;
+    font-size: 1.12rem;
+    color: var(--ink);
+    transition: color .3s ease;
+  }
+  details summary::-webkit-details-marker{ display:none; }
+  details summary:hover{ color: var(--sage-deep); }
+  details summary::after{
+    content:"+";
+    position:absolute; right:.15rem; top:50%; transform: translateY(-50%);
+    color: var(--sage); font-size:1.3rem; transition: transform .3s ease;
+  }
+  details[open] summary::after{ content:"–"; }
+  details .ans{ padding: 0 1.5rem 1.35rem 0; color: var(--ink-soft); }
+  details summary:focus-visible{ outline: 2px solid var(--sage); outline-offset: 3px; border-radius:4px; }
+
+  /* ---------- Closing invitation ---------- */
+  .close{
+    position: relative;
+    text-align: center;
+    padding: var(--rhythm) 0;
+    overflow: hidden;
+  }
+  .close::before{
+    content:"";
+    position:absolute; left:50%; top:38%; transform: translate(-50%,-50%);
+    width: 340px; height: 340px; border-radius:50%;
+    background: radial-gradient(circle, rgba(231,192,136,.34), transparent 66%);
+    pointer-events:none;
+  }
+  .close .hold{ position:relative; }
+  .close h2{ font-weight:300; font-size: clamp(1.8rem,1rem+3vw,2.8rem); margin:0 0 1.5rem; line-height:1.2; }
+  .glad{
+    font-style: italic;
+    color: var(--sage-deep);
+    font-size: 1.25em;
+    margin-bottom: 2rem;
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    text-align:center;
+    padding: 3rem 1.5rem 3.5rem;
+    color: var(--ink-faint);
+    font-size: .92rem;
+    border-top: 1px solid var(--line);
+  }
+  footer .name{ color: var(--ink-soft); font-size:1.05rem; margin-bottom:.4rem; }
+  footer a{ color: var(--sage-deep); text-decoration: none; border-bottom:1px solid var(--line); }
+  footer a:hover{ border-color: var(--sage); }
+
+  /* focus visibility everywhere */
+  a:focus-visible, .btn:focus-visible{ outline: 2px solid var(--sage-deep); outline-offset: 3px; }
+</style>
+</head>
+
+<body>
+
+<header class="bar" id="bar">
+  <a class="mark" href="#top">Come &amp; Rest <span>· with Chris</span></a>
+  <nav class="links" aria-label="Sections">
+    <a href="#story">The story</a>
+    <a href="#what">What this is</a>
+    <a href="#questions">Questions</a>
+    <a href="#talk">Let's talk</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- Home -->
+  <section class="hero" aria-label="Welcome">
+    <span class="lamp" aria-hidden="true"></span>
+    <div class="hold">
+      <h1>You spend your life holding others up.<br><em>This is a place where you don't have to.</em></h1>
+      <a class="btn" href="#talk">Let's talk <span class="arrow" aria-hidden="true">&rarr;</span></a>
+    </div>
+  </section>
+
+  <!-- Welcome video -->
+  <section aria-label="A short welcome" style="margin-top: var(--rhythm)">
+    <div class="hold" style="text-align:center; margin-bottom:2.5rem;">
+      <p class="eyebrow">A short welcome</p>
+      <h2 class="head" style="margin-inline:auto; max-width: 24ch;">Chris' Heart for Pastors and their Families</h2>
+    </div>
+    <video class="frame" controls preload="metadata" playsinline poster="" aria-label="A short welcome from Chris">
+      <source src="WelcomeVideo.mp4" type="video/mp4" />
+      Your browser doesn't support embedded video. You can
+      <a href="WelcomeVideo.mp4">watch the welcome video here</a>.
+    </video>
+  </section>
+
+  <hr class="horizon" />
+
+  <!-- The story -->
+  <section id="story" aria-label="The story">
+    <div class="hold">
+      <p class="eyebrow">Why I started this</p>
+      <p class="lede">After more than twenty-five years in pastoral ministry, I came to realize something I didn't understand for a long time: many of us called to shepherd others don't always know how to be shepherded ourselves.</p>
+
+      <p>Pastors, missionaries, ministry leaders, and their families often spend their lives caring for everyone else while quietly carrying burdens few people ever see &mdash; the weight of leadership, hard decisions, conflict, discouragement, loneliness, and always being available. Slowly it becomes heavier than anyone was meant to carry alone.</p>
+
+      <p>I know, because I've been there. For years I carried ministry in a way that didn't look much like what Jesus described.</p>
+
+      <blockquote class="scripture">
+        My yoke is easy, and my burden is light.
+        <cite>Matthew 11:30</cite>
+      </blockquote>
+
+      <p>Over the last several years, the Lord has graciously taught me to walk alongside other healthy pastors, to live in genuine accountability, and to let myself be shepherded instead of always shepherding alone. It refreshed my walk with Christ, strengthened my marriage, and reminded me that ministry was never meant to be carried in isolation.</p>
+
+      <p class="soft">Out of that grew a simple desire: a quiet, confidential place where you can talk, process what you're carrying, receive prayer, and be encouraged from Scripture. Not counseling. Not coaching. Just one fellow shepherd walking beside another, pointing each other back to the Chief Shepherd.</p>
+    </div>
+  </section>
+
+  <hr class="horizon" />
+
+  <!-- What this is / is not -->
+  <section id="what" aria-label="What this is">
+    <div class="hold" style="text-align:center; margin-bottom:2.6rem;">
+      <p class="eyebrow">Plainly said</p>
+      <h2 class="head" style="margin-inline:auto;">What this is &mdash; and what it isn't</h2>
+    </div>
+    <div class="two">
+      <div class="col">
+        <h3>This is</h3>
+        <ul class="plain is">
+          <li>A safe conversation</li>
+          <li>Prayer</li>
+          <li>Biblical encouragement</li>
+          <li>Processing ministry challenges</li>
+          <li>Accountability</li>
+          <li>Friendship</li>
+          <li>Confidentiality</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3>This is not</h3>
+        <ul class="plain isnot">
+          <li>Professional counseling</li>
+          <li>Therapy</li>
+          <li>Crisis intervention</li>
+          <li>Denominational oversight</li>
+          <li>Consulting</li>
+          <li>Performance coaching</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="horizon" />
+
+  <!-- Questions -->
+  <section id="questions" aria-label="Questions">
+    <div class="hold" style="text-align:center; margin-bottom:2rem;">
+      <p class="eyebrow">A few honest questions</p>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>Who is this for?</summary>
+        <div class="ans">Pastors, missionaries, ministry leaders, and their families &mdash; anyone carrying the weight of shepherding others.</div>
+      </details>
+      <details>
+        <summary>Do I have to be a pastor?</summary>
+        <div class="ans">No. If ministry has become heavier than you expected, you're welcome here.</div>
+      </details>
+      <details>
+        <summary>Is there a cost?</summary>
+        <div class="ans">No. This isn't a service or a program. It's simply a fellow shepherd making time for you.</div>
+      </details>
+      <details>
+        <summary>What if I just need someone to listen?</summary>
+        <div class="ans">Then that's exactly what we'll do. You don't need an agenda, and you don't have to have anything figured out first.</div>
+      </details>
+      <details>
+        <summary>Is this confidential?</summary>
+        <div class="ans">Yes. What you share stays between us.</div>
+      </details>
+      <details>
+        <summary>Can my wife join?</summary>
+        <div class="ans">Of course. She often carries nearly as much as you do, and she's always welcome.</div>
+      </details>
+    </div>
+  </section>
+
+  <!-- Closing invitation -->
+  <section id="talk" class="close" aria-label="Schedule a conversation">
+    <div class="hold">
+      <p class="eyebrow">Schedule a conversation</p>
+      <h2>If you'd like to talk, I'd be honored to spend some time with you.</h2>
+      <p class="glad">I'm glad you're here.</p>
+      <a class="btn" href="https://cal.com/chris-evenson-9j9bld/shepherds-rest" target="_blank" rel="noopener">Start a conversation <span class="arrow" aria-hidden="true">&rarr;</span></a>
+      <p class="soft" style="margin-top:1.6rem; font-size:.95rem;">Sometimes the healthiest thing a shepherd can do<br>is let someone walk beside him for a while.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="name">Chris</div>
+  <p>A ministry of presence &mdash; walking with weary shepherds.</p>
+  <p style="margin-top:.4rem;">Confidential &nbsp;·&nbsp; <a href="https://cal.com/chris-evenson-9j9bld/shepherds-rest" target="_blank" rel="noopener">Schedule a conversation</a></p>
+</footer>
+
+<script>
+  // Quiet top bar: fade in a soft background only after scrolling past the hero mood.
+  (function(){
+    var bar = document.getElementById('bar');
+    function onScroll(){
+      if (window.scrollY > 40) bar.classList.add('settled');
+      else bar.classList.remove('settled');
+    }
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
+</script>
+
+</body>
+</html>
