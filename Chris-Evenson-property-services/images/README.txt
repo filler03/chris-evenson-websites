@@ -4,15 +4,10 @@ Save photos in this folder using these exact lowercase names. The site
 finds them automatically; empty spots just show a placeholder.
 
 DONE (already added):
-  images/chris.jpg          - photo of Chris (Meet Chris section)
-  images/before-after.jpg   - patio before/after (Recent Work)
-  images/pergola.jpg        - pergola/patio cover (Recent Work)
-
-STILL OPEN - add whenever you have them:
-  images/deck-replacement.jpg
-  images/deck-staining.jpg
-  images/roof-repair.jpg
-  images/pressure-washing.jpg
+  images/chris.jpg              - photo of Chris (Meet Chris section)
+  images/before-after.jpg       - patio before/after (Recent Work)
+  images/pergola.jpg            - pergola/patio cover (Recent Work)
+  images/pressure-washing.jpg   - pressure washing (Recent Work)
 
 TIPS
   - Use .jpg files with these exact names (convert PNG/HEIC to JPG first).
