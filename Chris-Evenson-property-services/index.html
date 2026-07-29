@@ -221,6 +221,8 @@
   .work{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
   .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
   .work-grid .photo-ph{aspect-ratio:4/3}
+  .work-grid .video-feature{grid-column:1/-1;justify-self:center;width:100%;max-width:700px;aspect-ratio:16/9}
+  .work-grid .video-feature video.ph-img{object-fit:cover}
 
   /* ---------- Reviews ---------- */
   .reviews{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-align:center}
@@ -407,6 +409,7 @@
       <p>A look at the kind of work I do around homes across the Upstate. Photos of recent jobs go here.</p>
     </div>
     <div class="work-grid">
+      <figure class="photo-ph reveal video-feature" style="--d:0s"><video class="ph-img" src="Videos/Deck.mp4" autoplay muted loop playsinline controls></video><span class="ph-label">Deck project walkthrough</span></figure>
       <figure class="photo-ph reveal" style="--d:0s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z"/><circle cx="12" cy="13" r="3.2"/></svg><span class="ph-label">Pergola build &amp; repair</span><span class="ph-hint">Save as images/pergola.jpg</span><img class="ph-img" src="images/pergola.jpg" alt="Pergola build and repair project" onerror="this.remove()"></figure>
       <figure class="photo-ph reveal" style="--d:.05s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z"/><circle cx="12" cy="13" r="3.2"/></svg><span class="ph-label">Pressure washing</span><span class="ph-hint">Save as images/pressure-washing.jpg</span><img class="ph-img" src="images/pressure-washing.jpg" alt="Pressure washing project" onerror="this.remove()"></figure>
       <figure class="photo-ph reveal" style="--d:.1s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z"/><circle cx="12" cy="13" r="3.2"/></svg><span class="ph-label">Before &amp; after</span><span class="ph-hint">Save as images/before-after.jpg</span><img class="ph-img" src="images/before-after.jpg" alt="Before and after project" onerror="this.remove()"></figure>
