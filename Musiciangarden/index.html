@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Musician Garden — Helping Musicians Grow | Guitar, Ukulele &amp; Piano Lessons</title>
+<meta name="description" content="Personalized guitar, ukulele, and piano lessons for school-age students and teenagers. Musician Garden helps students discover the creativity already within them and tend it with patience, discipline, and steady practice. Helping Musicians Grow." />
+
+<!-- Fonts: Newsreader, a warm literary serif -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
+
+<style>
+  /* ---------- Tokens ---------- */
+  :root{
+    --paper:      #F4F0E6;   /* warm cream — quiet, natural */
+    --paper-deep: #EBE5D7;   /* dusk base */
+    --paper-lift: #FAF7EF;   /* raised cards */
+    --ink:        #2E2A22;   /* warm near-black, never pure black */
+    --ink-soft:   #5C5546;   /* secondary text */
+    --ink-faint:  #8B8371;   /* labels, captions */
+    --clay:       #A0653C;   /* warm clay — the one accent */
+    --clay-deep:  #7C4E2E;
+    --line:       #D8D0BF;   /* faint horizon rules */
+
+    --measure: 38rem;
+    --rhythm: clamp(5rem, 11vh, 8.5rem);   /* space between sections */
+
+    --serif: "Newsreader", Georgia, "Times New Roman", serif;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html{ scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior: auto; } }
+
+  body{
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(1.06rem, 0.6rem + 0.9vw, 1.2rem);
+    line-height: 1.78;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection{ background: rgba(160,101,60,.22); }
+
+  a{ color: inherit; }
+
+  /* shared layout container */
+  .hold{
+    width: min(var(--measure), calc(100% - 2.75rem));
+    margin-inline: auto;
+  }
+
+  /* small letter-spaced eyebrow labels */
+  .eyebrow{
+    font-size: .74rem;
+    letter-spacing: .26em;
+    text-transform: uppercase;
+    color: var(--clay-deep);
+    font-weight: 500;
+    margin: 0 0 1.4rem;
+  }
+
+  /* a soft hand-drawn horizon between sections */
+  .horizon{
+    width: min(var(--measure), calc(100% - 2.75rem));
+    margin: var(--rhythm) auto;
+    height: 1px;
+    border: 0;
+    background: linear-gradient(90deg, transparent, var(--line) 18%, var(--line) 82%, transparent);
+    position: relative;
+  }
+  .horizon::after{
+    content:"";
+    position:absolute; left:50%; top:50%;
+    width: 5px; height: 5px; margin:-2.5px 0 0 -2.5px;
+    border-radius:50%;
+    background: var(--clay);
+    opacity:.45;
+  }
+
+  /* ---------- Quiet top bar ---------- */
+  header.bar{
+    position: sticky; top: 0; z-index: 20;
+    display:flex; align-items:center; justify-content:space-between;
+    gap:1rem;
+    padding: 1.05rem clamp(1.25rem, 4vw, 2.5rem);
+    background: transparent;
+    transition: background .5s ease, box-shadow .5s ease;
+  }
+  header.bar.settled{
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(7px);
+    box-shadow: 0 1px 0 var(--line);
+  }
+  .mark{
+    font-size: 1.02rem;
+    letter-spacing: .02em;
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .mark span{ color: var(--ink-faint); font-weight: 400; }
+  nav.links{ display:flex; gap: clamp(1rem, 3vw, 2rem); }
+  nav.links a{
+    font-size: .92rem;
+    color: var(--ink-soft);
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
+    transition: color .3s ease, border-color .3s ease;
+  }
+  nav.links a:hover, nav.links a:focus-visible{ color: var(--clay-deep); border-color: var(--clay); }
+
+  .nav-toggle{
+    display:none;
+    background:none; border:0; padding:.35rem; cursor:pointer;
+    color: var(--ink);
+  }
+  .nav-toggle svg{ width:26px; height:26px; display:block; }
+  .nav-toggle .ico-close{ display:none; }
+  .nav-open .nav-toggle .ico-open{ display:none; }
+  .nav-open .nav-toggle .ico-close{ display:block; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding: clamp(3.5rem, 9vw, 6.5rem) 0 0;
+    text-align: center;
+  }
+  .hero h1{
+    font-size: clamp(2.7rem, 7vw, 4.3rem);
+    line-height: 1.06;
+    font-weight: 400;
+    letter-spacing: -.01em;
+    margin: 0 0 1.3rem;
+  }
+  .hero h1 em{
+    font-style: italic;
+    font-weight: 300;
+    color: var(--clay-deep);
+  }
+  .hero .lede{
+    max-width: 46ch;
+    margin: 0 auto 2.2rem;
+    font-size: 1.12em;
+    color: var(--ink-soft);
+  }
+  .hero .cta{
+    display:flex; flex-wrap:wrap; gap:.9rem; justify-content:center;
+    margin-bottom: clamp(3rem, 7vw, 4.5rem);
+  }
+
+  .btn{
+    display:inline-flex; align-items:center; gap:.55rem;
+    background: var(--clay);
+    color: #FBF8F1;
+    text-decoration:none;
+    padding: .85rem 1.6rem;
+    border-radius: 999px;
+    font-size: .98rem;
+    border: 1px solid var(--clay);
+    transition: background .3s ease, transform .3s ease;
+  }
+  .btn:hover, .btn:focus-visible{ background: var(--clay-deep); }
+  .btn.ghost{
+    background: transparent;
+    color: var(--ink);
+    border-color: var(--line);
+  }
+  .btn.ghost:hover, .btn.ghost:focus-visible{
+    background: transparent;
+    color: var(--clay-deep);
+    border-color: var(--clay);
+  }
+  .btn .arrow{ transition: transform .3s ease; }
+  .btn:hover .arrow{ transform: translateX(3px); }
+
+  /* ---------- Photos (placeholder-aware) ---------- */
+  .photo{
+    margin: 0;
+    position: relative;
+    background:
+      radial-gradient(circle at 20% 30%, color-mix(in srgb, var(--clay) 12%, transparent), transparent 60%),
+      var(--paper-deep);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+    min-height: 220px;
+  }
+  .photo img{ display:block; width:100%; height:auto; }
+  .photo-note{
+    display:none;
+    align-items:center; justify-content:center;
+    min-height: 220px;
+    padding: 2rem;
+    margin: 0;
+    color: var(--ink-faint);
+    font-size: .92rem;
+    font-style: italic;
+    text-align: center;
+  }
+  .photo.missing img{ display:none; }
+  .photo.missing .photo-note{ display:flex; }
+
+  .hero-photo{ width: min(56rem, calc(100% - 2.75rem)); margin: 0 auto; }
+  .hero-photo .photo-note{ min-height: 320px; }
+
+  /* ---------- Section headings ---------- */
+  section{ padding: var(--rhythm) 0; }
+  .head{
+    font-size: clamp(1.9rem, 4.2vw, 2.6rem);
+    font-weight: 400;
+    line-height: 1.2;
+    margin: 0 0 1.2rem;
+    letter-spacing: -.01em;
+  }
+  .lede-col{
+    font-size: 1.1em;
+    color: var(--ink-soft);
+  }
+  .soft{ color: var(--ink-soft); }
+
+  .two{
+    display:grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+  @media (max-width: 760px){ .two{ grid-template-columns: 1fr; } }
+
+  blockquote.quiet{
+    margin: 2.2rem 0 0;
+    padding: 1.4rem 1.6rem;
+    border-left: 2px solid var(--clay);
+    background: var(--paper-lift);
+    color: var(--ink-soft);
+    font-style: italic;
+    font-size: 1.05em;
+    border-radius: 0 10px 10px 0;
+  }
+
+  /* ---------- Instrument cards ---------- */
+  .cards{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1.1rem;
+    margin-top: 2.4rem;
+  }
+  .card{
+    background: var(--paper-lift);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 1.7rem 1.7rem 1.8rem;
+  }
+  .card h3{
+    margin: 0 0 .6rem;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--clay-deep);
+  }
+  .card p{ margin: 0; font-size: .97em; color: var(--ink-soft); }
+
+  ul.plain{ list-style: none; padding: 0; margin: 0; }
+  ul.plain li{
+    padding: .35rem 0 .35rem 1.7rem;
+    position: relative;
+    color: var(--ink-soft);
+  }
+  ul.plain li::before{
+    content:"";
+    position:absolute; left:.35rem; top:.95rem;
+    width:6px; height:6px; border-radius:50%;
+    background: var(--clay);
+    opacity:.55;
+  }
+
+  /* ---------- Practice article list ---------- */
+  .articles{
+    list-style: none;
+    padding: 0;
+    margin: 2.2rem 0 0;
+    border-top: 1px solid var(--line);
+  }
+  .articles li{
+    border-bottom: 1px solid var(--line);
+  }
+  .articles a{
+    display:flex; align-items:baseline; justify-content:space-between; gap:1rem;
+    text-decoration: none;
+    color: var(--ink);
+    padding: 1rem .2rem;
+    font-size: 1.05em;
+    transition: color .3s ease, padding-left .3s ease;
+  }
+  .articles a:hover, .articles a:focus-visible{
+    color: var(--clay-deep);
+    padding-left: .6rem;
+  }
+  .articles .soon{
+    flex-shrink:0;
+    font-size: .72rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .closing{
+    margin-top: 2.4rem;
+    font-style: italic;
+    color: var(--clay-deep);
+  }
+
+  /* ---------- Contact ---------- */
+  .contact-actions{
+    display:flex; flex-wrap:wrap; gap:.9rem; margin-top: 2.2rem;
+  }
+  .contact-facts{
+    margin-top: 2rem;
+    display:flex; flex-direction: column; gap:.5rem;
+    color: var(--ink-soft);
+  }
+  .contact-facts a{ color: inherit; text-decoration: none; border-bottom: 1px solid var(--line); }
+  .contact-facts a:hover, .contact-facts a:focus-visible{ color: var(--clay-deep); border-color: var(--clay); }
+
+  /* ---------- Footer ---------- */
+  footer{
+    padding: 2.5rem clamp(1.25rem, 4vw, 2.5rem) 3rem;
+    text-align:center;
+    color: var(--ink-faint);
+    font-size: .92rem;
+  }
+  footer .tag{ color: var(--ink-soft); font-style: italic; margin: 0 0 .6rem; }
+
+  /* ---------- Reveal (subtle) ---------- */
+  .reveal{ opacity: 0; transform: translateY(14px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in{ opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity: 1; transform: none; transition: none; }
+  }
+
+  /* ---------- Mobile nav ---------- */
+  @media (max-width: 720px){
+    .nav-toggle{ display:block; }
+    nav.links{
+      position: fixed; inset: 0 0 0 auto;
+      width: min(80vw, 300px);
+      flex-direction: column; gap: 0;
+      background: var(--paper-lift);
+      border-left: 1px solid var(--line);
+      padding: 5rem 2rem 2rem;
+      transform: translateX(100%);
+      transition: transform .4s ease;
+      z-index: 30;
+    }
+    .nav-open nav.links{ transform: translateX(0); }
+    nav.links a{
+      padding: .85rem 0;
+      font-size: 1.05rem;
+      border-bottom: 1px solid var(--line);
+      border-bottom-color: var(--line) !important;
+    }
+  }
+</style>
+</head>
+<body id="top">
+
+<header class="bar" id="bar">
+  <a class="mark" href="#top">Musician Garden <span>· Helping Musicians Grow</span></a>
+  <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="links">
+    <svg class="ico-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    <svg class="ico-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6 18 18M18 6 6 18"/></svg>
+  </button>
+  <nav class="links" id="links" aria-label="Sections">
+    <a href="#lessons">Lessons</a>
+    <a href="#philosophy">Philosophy</a>
+    <a href="#about">About Chris</a>
+    <a href="#practice">Practice Tips</a>
+    <a href="#resources">Resources</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+  <section class="hero reveal in">
+    <div class="hold">
+      <p class="eyebrow">Personalized music lessons for school-age students &amp; teenagers</p>
+      <h1>Helping <em>Musicians</em> Grow</h1>
+      <p class="lede">Guitar, ukulele, and piano lessons where creativity is recognized, foundations are established, habits are cultivated, and each young musician is patiently helped to grow.</p>
+      <div class="cta">
+        <a class="btn" href="#contact">Ask about lessons <span class="arrow" aria-hidden="true">&rarr;</span></a>
+        <a class="btn ghost" href="#about">Meet Chris</a>
+      </div>
+    </div>
+    <figure class="photo hero-photo reveal in" id="heroPhoto">
+      <img src="images/hero.jpg" alt="Chris teaching a young student during a music lesson" loading="lazy"
+           onerror="this.closest('.photo').classList.add('missing')">
+      <figcaption class="photo-note">Add a photo named images/hero.jpg</figcaption>
+    </figure>
+  </section>
+
+  <hr class="horizon" />
+
+  <section id="lessons" aria-label="Lessons">
+    <div class="hold reveal">
+      <p class="eyebrow">Lessons</p>
+      <h2 class="head">Every student grows differently</h2>
+      <p class="lede-col">Lessons at Musician Garden are built around the student, not the syllabus. Chris takes time to learn each young musician&rsquo;s personality, interests, and way of hearing — and shapes lessons to what is already there, helping it grow.</p>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Guitar</h3>
+          <p>Acoustic and electric, from first chords to confident playing. Good technique, careful practice, and music that means something to the student.</p>
+        </div>
+        <div class="card">
+          <h3>Ukulele</h3>
+          <p>A wonderfully approachable first instrument — perfect for younger students building early confidence, rhythm, and the joy of making music.</p>
+        </div>
+        <div class="card">
+          <h3>Piano</h3>
+          <p>Reading, theory, and expressiveness at the keys — foundations that serve a student for a lifetime, whatever instrument they later choose.</p>
+        </div>
+      </div>
+
+      <p class="soft" style="margin-top:2.2rem;">Lessons build <strong>confidence, creativity, character, discipline, musical understanding, and enjoyment</strong>. Technical skills are important — but they are tools that help students express something meaningful.</p>
+    </div>
+  </section>
+
+  <hr class="horizon" />
+
+  <section id="gift" aria-label="Creativity is a gift">
+    <div class="hold reveal">
+      <p class="eyebrow">What we believe</p>
+      <h2 class="head">Creativity Is a Gift. Growth Is Something We Tend.</h2>
+      <p>Every student brings something unique to music — their personality, interests, experiences, ideas, and their own way of hearing and expressing what they feel.</p>
+      <p>Lessons at Musician Garden help students discover what is already within them while developing the skills, patience, discipline, and steady habits needed to help it grow.</p>
+      <p>Musical progress rarely comes through shortcuts or one dramatic breakthrough. More often, it grows little by little as a student keeps showing up, practices thoughtfully, and learns to care for both the gift and the craft.</p>
+      <blockquote class="quiet">Small, steady habits shape meaningful growth over time.</blockquote>
+    </div>
+  </section>
+
+  <hr class="horizon" />
+
+  <section id="philosophy" aria-label="Teaching philosophy">
+    <div class="hold reveal">
+      <p class="eyebrow">Teaching philosophy</p>
+      <h2 class="head">Tending the Gift</h2>
+      <p>I believe creativity is a gift, and caring for it is an act of stewardship.</p>
+      <p>That means encouraging the musical ideas and abilities already emerging within a student, while also helping them develop the patience, discipline, understanding, and character needed to tend those gifts well.</p>
+      <p>Musical growth rarely comes through shortcuts. It is cultivated through careful listening, thoughtful practice, repetition, perseverance, and respect for the craft.</p>
+      <p>A student&rsquo;s gifts should be recognized and encouraged — but they should also be tended. Small, steady habits shape meaningful growth over time.</p>
+      <p>My goal is to help students enjoy music and express themselves creatively while also learning how to show up consistently, work through difficulty, care for their instruments, and take responsibility for their own growth.</p>
+    </div>
+  </section>
+
+  <hr class="horizon" />
+
+  <section id="about" aria-label="About Chris">
+    <div class="hold reveal">
+      <p class="eyebrow">About Chris</p>
+      <div class="two">
+        <div>
+          <h2 class="head">The teacher behind the garden</h2>
+          <p>As a musician and teacher, I have learned that progress does not usually come from one dramatic breakthrough. It grows through showing up consistently, paying attention, working patiently, and learning to value the process.</p>
+          <p>That is part of what Musician Garden means to me. I want to recognize and encourage the God-given creativity within a student while also helping that student develop the habits, skills, and character needed to tend it faithfully.</p>
+        </div>
+        <figure class="photo" id="chrisPhoto">
+          <img src="images/chris.jpg" alt="Portrait of Chris, Musician Garden teacher" loading="lazy"
+               onerror="this.closest('.photo').classList.add('missing')">
+          <figcaption class="photo-note">Add a photo named images/chris.jpg</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <hr class="horizon" />
+
+  <section id="practice" aria-label="Practice tips">
+    <div class="hold reveal">
+      <p class="eyebrow">Practice tips</p>
+      <h2 class="head">Practice Tips for Growing Musicians</h2>
+      <p>Music is not something we need to rush. It is cultivated through patient, purposeful practice.</p>
+      <p>Progress does not usually arrive through one dramatic breakthrough. More often, it grows through small discoveries, repeated effort, and the decision to keep showing up.</p>
+      <p>These short guides are designed to help students and parents build steady practice habits, work through musical challenges, care for their instruments, and make the learning process more productive and enjoyable.</p>
+
+      <ul class="articles" aria-label="Practice guide topics">
+        <li><a href="#contact"><span>Why Small, Steady Practice Wins</span><span class="soon">Soon</span></a></li>
+        <li><a href="#contact"><span>How to Build a Practice Space That Invites You Back</span><span class="soon">Soon</span></a></li>
+        <li><a href="#contact"><span>Caring for Your Instrument Is Part of Musicianship</span><span class="soon">Soon</span></a></li>
+        <li><a href="#contact"><span>Steady Progress Over Shortcuts</span><span class="soon">Soon</span></a></li>
+        <li><a href="#contact"><span>Why Repetition Is Not the Enemy</span><span class="soon">Soon</span></a></li>
+        <li><a href="#contact"><span>How to Practice Thoughtfully Instead of Mindlessly</span><span class="soon">Soon</span></a></li>
+        <li><a href="#contact"><span>Respecting the Craft Without Losing the Joy</span><span class="soon">Soon</span></a></li>
+        <li><a href="#contact"><span>What to Do When Progress Feels Slow</span><span class="soon">Soon</span></a></li>
+        <li><a href="#contact"><span>The Difference Between Useful Tools and Distractions</span><span class="soon">Soon</span></a></li>
+        <li><a href="#contact"><span>Showing Up Consistently When Motivation Is Low</span><span class="soon">Soon</span></a></li>
+      </ul>
+
+      <p class="closing">A small, steady way to tend your craft.</p>
+    </div>
+  </section>
+
+  <hr class="horizon" />
+
+  <section id="resources" aria-label="Learning resources">
+    <div class="hold reveal">
+      <p class="eyebrow">Learning resources</p>
+      <h2 class="head">Tools That Serve the Work</h2>
+      <p class="lede-col" style="font-style:italic; color: var(--clay-deep); margin-bottom: 1.6rem;">Tools for steady practice and thoughtful craft.</p>
+      <p>The best learning materials and practice tools should support a musician&rsquo;s growth without becoming a distraction.</p>
+      <p>This section will gradually become a carefully chosen collection of books, method materials, sheet music, apps, practice tools, instrument-care supplies, and equipment that can help students practice thoughtfully and care for their craft.</p>
+      <p>Resources should be recommended because they are useful, well suited to the student, and capable of supporting meaningful work — not simply because they are popular or available for sale.</p>
+    </div>
+  </section>
+
+  <hr class="horizon" />
+
+  <section id="contact" aria-label="Contact">
+    <div class="hold reveal" style="text-align:center;">
+      <p class="eyebrow">Get in touch</p>
+      <h2 class="head" style="margin-inline:auto;">Ask about lessons</h2>
+      <p class="lede-col" style="max-width:44ch; margin:0 auto;">I&rsquo;d be glad to talk about lessons for your child — what they love about music, what would suit them, and how to get started.</p>
+      <div class="contact-actions" style="justify-content:center;">
+        <a class="btn" href="tel:[YOUR-PHONE-NUMBER]">Call <span class="arrow" aria-hidden="true">&rarr;</span></a>
+        <a class="btn ghost" href="mailto:[YOUR-EMAIL-ADDRESS]">Email us</a>
+      </div>
+      <div class="contact-facts">
+        <span>Phone: <a href="tel:[YOUR-PHONE-NUMBER]">[Your phone number]</a></span>
+        <span>Email: <a href="mailto:[YOUR-EMAIL-ADDRESS]">[your email address]</a></span>
+        <span>Location: <a href="#contact">[City, State]</a></span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p class="tag">Helping Musicians Grow</p>
+  <p>&copy; <span id="yr"></span> Musician Garden</p>
+</footer>
+
+<script>
+  // Year in footer
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Sticky header settles after scrolling
+  var bar = document.getElementById('bar');
+  var onScroll = function(){
+    bar.classList.toggle('settled', window.scrollY > 10);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Mobile nav toggle
+  var navToggle = document.getElementById('navToggle');
+  navToggle.addEventListener('click', function(){
+    var open = document.body.classList.toggle('nav-open');
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+  document.querySelectorAll('#links a').forEach(function(link){
+    link.addEventListener('click', function(){
+      document.body.classList.remove('nav-open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.setAttribute('aria-label', 'Open menu');
+    });
+  });
+
+  // Subtle reveal on scroll
+  if ('IntersectionObserver' in window &&
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting){
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal:not(.in)').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+
+</body>
+</html>
