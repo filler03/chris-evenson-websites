@@ -191,6 +191,18 @@
   .referral h2{font-size:clamp(1.5rem,3.1vw,2.1rem);margin-bottom:.7rem}
   .referral p{color:var(--muted);font-size:1.03rem;margin-bottom:1.7rem}
 
+  /* ---------- Honey-Do Hour promo ---------- */
+  .promo-hdo{background:linear-gradient(135deg,#1a2c47,var(--navy) 60%,var(--navy-900));color:var(--cream)}
+  .promo-hdo .eyebrow{color:#cdd7b6}
+  .promo-hdo h2{color:#fff;font-size:clamp(1.9rem,3.6vw,2.7rem);margin-bottom:.5rem}
+  .promo-hdo p{color:rgba(244,240,227,.85);font-size:1.05rem;max-width:48ch;margin-bottom:1.4rem}
+  .promo-hdo .promo-sub{font-family:'Fraunces',serif;font-weight:600;color:#cdd7b6;font-size:clamp(1.2rem,2.6vw,1.6rem);line-height:1.2;margin-bottom:1rem}
+  .promo-hdo-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+  .promo-price{justify-self:center;text-align:center;background:rgba(244,240,227,.06);border:1px solid var(--line-navy);border-radius:20px;padding:2.1rem 2.7rem;box-shadow:var(--shadow)}
+  .promo-price span{display:block;font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:#cdd7b6;margin-bottom:.35rem}
+  .promo-price strong{display:block;font-family:'Fraunces',serif;font-weight:700;font-size:clamp(3rem,8vw,4.5rem);line-height:1;color:#fff}
+  .promo-price small{display:block;margin-top:.55rem;font-size:.85rem;color:rgba(244,240,227,.75)}
+
   /* ---------- Footer ---------- */
   .site-foot{background:var(--navy-900);color:rgba(244,240,227,.75);padding:2.6rem 0}
   .foot-inner{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1.5rem}
@@ -265,6 +277,8 @@
     .area-grid{grid-template-columns:1fr;gap:2rem}
     .meet-grid{grid-template-columns:1fr;gap:2.2rem}
     .meet-photo{max-width:360px;margin-inline:auto}
+    .promo-hdo-grid{grid-template-columns:1fr;gap:2rem}
+    .promo-price{justify-self:start}
   }
   @media(max-width:640px){
     .head-nav{display:none}
@@ -302,6 +316,7 @@
     <nav class="head-nav" aria-label="Primary">
       <a href="about.html">About</a>
       <a href="#services">Services</a>
+      <a href="honey-do-hour/">Honey-Do Hour</a>
       <a href="#reviews">Reviews</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -320,6 +335,7 @@
     <div class="wrap">
       <a href="about.html">About</a>
       <a href="#services">Services</a>
+      <a href="honey-do-hour/">Honey-Do Hour</a>
       <a href="#reviews">Reviews</a>
       <a href="#area">Service Area</a>
       <a href="#contact">Contact</a>
@@ -480,6 +496,30 @@
         <p>Professional preparation and staining of decks, railings, stairs, pergolas, and outdoor wood surfaces.</p>
       </article>
 
+    </div>
+  </div>
+</section>
+
+<!-- ================= HONEY-DO HOUR PROMO ================= -->
+<section class="section promo-hdo on-navy" id="honey-do">
+  <div class="wrap promo-hdo-grid">
+    <div class="reveal">
+      <span class="eyebrow">New service</span>
+      <h2>The $65 Honey-Do Hour</h2>
+      <p class="promo-sub">Little jobs. Big relief.</p>
+      <p>Got a list of little things around the house that need fixing? Make your list, gather your materials, and I'll bring the tools — $65 for the first hour, then $50/hour in 15-minute increments.</p>
+      <div class="hero-cta" style="margin-bottom:0">
+        <a class="btn btn-primary" href="honey-do-hour/">Learn more</a>
+        <a class="btn btn-ghost" href="sms:+14025151412?body=Hey%20Chris!%20I%27m%20interested%20in%20scheduling%20a%20Honey-Do%20Hour.%20Here%20are%20a%20few%20things%20I%27d%20like%20help%20with%3A">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H9l-5 4V6a1 1 0 0 1 1-1Z"/></svg>
+          Text Chris to Schedule
+        </a>
+      </div>
+    </div>
+    <div class="promo-price reveal">
+      <span>First Hour</span>
+      <strong>$65</strong>
+      <small>Then $50/hr · 15-min increments</small>
     </div>
   </div>
 </section>
