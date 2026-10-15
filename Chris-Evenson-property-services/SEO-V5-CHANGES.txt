@@ -1,0 +1,1 @@
+SEO v5: Six service pages restyled using the homepage header, footer, navigation, palette, and typography. Shorter visible H1 headings retain the full location-focused SEO title and canonical URLs. Existing service text retained; selected real project images used only where relevant. Related services converted into cards. Homepage and other existing pages unchanged.

@@ -1,0 +1,15 @@
+CHRIS EVENSON PROPERTY SERVICES — V7 RELEASE CANDIDATE
+October 15, 2026
+
+Changes from v6:
+1. Corrected sitemap.xml About entry from /about/ to /about.html to match the included page.
+2. Removed the unfinished "Photos of recent jobs go here." sentence from the homepage Recent Work section. Existing photos and video remain unchanged.
+3. Standardized heading typography (H1–H6) to the approved Libre Baskerville across the homepage, About, Honey-Do Hour, share page, and six service pages. Preserved existing heading sizes, layout, colors, and decorative Cinzel branding/eyebrow lettering.
+4. Improved descriptive alternative text on project photos. Repeated decorative footer logo images retain empty alt text to avoid redundant screen-reader announcements.
+5. Preserved all six service pages, their copy, approved two-line hero headline, green "Small Jobs.", navigation, and assets.
+
+RELEASE CHECKS:
+- All nine sitemap URLs match packaged HTML routes (home, about, Honey-Do Hour, six service pages).
+- Static local-link and image checks passed.
+- Browser rendering, mobile interactions, and live-host checks still require testing before publishing.
+- This ZIP is a review candidate; it has not been deployed.
