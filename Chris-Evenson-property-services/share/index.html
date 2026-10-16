@@ -388,8 +388,8 @@ h1,h2,h3,h4,h5,h6{font-family:'Libre Baskerville',Georgia,serif}
 
   // ---------- Referral sharing ----------
   const shareIntro = "I wanted to pass along the contact information for Chris Evenson Property Services. Chris handles home repairs, maintenance, and outdoor projects throughout the Upstate. You can see his services and contact him here:";
-  // Share the clean /share URL without query string or hash.
-  const shareUrl = window.location.origin + window.location.pathname;
+  // Share the clean /share URL without index.html, trailing slash, query string, or hash.
+  const shareUrl = (window.location.origin + window.location.pathname).replace(/index\.html$/, '').replace(/\/$/, '');
   const referralMessage = shareIntro + " " + shareUrl;
 
   const fallback = document.getElementById('shareFallback');
