@@ -301,7 +301,11 @@
     .btn{padding:.8em 1.2em}
     .foot-inner{flex-direction:column;align-items:flex-start}
   }
-  @media(min-width:641px){
+  @media(max-width:900px){
+    .head-nav{display:none}
+    .nav-toggle{display:inline-flex}
+  }
+  @media(min-width:901px){
     .nav-toggle{display:none !important}
     .mobile-nav{display:none !important}
   }
@@ -326,7 +330,14 @@ h1,h2,h3,h4,h5,h6{font-family:'Libre Baskerville',Georgia,serif}
 @media (max-width: 960px) { .hero-line-two { white-space: normal; } }
 @media (max-width: 640px) { .hero h1 { font-size: clamp(2rem, 7vw, 2.75rem); letter-spacing: -.04em; } }
 </style>
-<style>.service-learn{display:inline-block;margin-top:12px;color:#536a31;font-weight:700;text-decoration:underline;text-underline-offset:3px}.service-learn:focus-visible{outline:2px solid #536a31;outline-offset:3px}</style></head>
+<style>.service-learn{display:inline-block;margin-top:12px;color:#536a31;font-weight:700;text-decoration:underline;text-underline-offset:3px}.service-learn:focus-visible{outline:2px solid #536a31;outline-offset:3px}</style>
+<style>
+/* Homeowner Resources preview band */
+.res-preview{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.res-preview-inner{max-width:62ch;margin-inline:auto;text-align:center}
+.res-preview h2{font-size:clamp(1.5rem,3.1vw,2.1rem);margin-bottom:.7rem}
+.res-preview p{color:var(--muted);font-size:1.03rem;margin-bottom:1.7rem}
+</style></head>
 <body>
 <!-- ================= HEADER ================= -->
 <header class="site-head" id="top">
@@ -339,6 +350,7 @@ h1,h2,h3,h4,h5,h6{font-family:'Libre Baskerville',Georgia,serif}
 <a href="about.html">About</a>
 <a href="#services">Services</a>
 <a href="honey-do-hour/index.html">Honey-Do Hour</a>
+<a href="resources/index.html">Resources</a>
 <a href="#reviews">Reviews</a>
 <a href="#contact">Contact</a>
 </nav>
@@ -358,6 +370,7 @@ h1,h2,h3,h4,h5,h6{font-family:'Libre Baskerville',Georgia,serif}
 <a href="about.html">About</a>
 <a href="#services">Services</a>
 <a href="honey-do-hour/index.html">Honey-Do Hour</a>
+<a href="resources/index.html">Resources</a>
 <a href="#reviews">Reviews</a>
 <a href="#area">Service Area</a>
 <a href="#contact">Contact</a>
@@ -594,6 +607,18 @@ h1,h2,h3,h4,h5,h6{font-family:'Libre Baskerville',Georgia,serif}
 <span class="chip"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11Z"></path><circle cx="12" cy="10" r="2.4"></circle></svg>Cowpens, SC</span>
 <span class="chip"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11Z"></path><circle cx="12" cy="10" r="2.4"></circle></svg>Tryon, NC</span>
 </div>
+</div>
+</section>
+<!-- ================= HOMEOWNER RESOURCES ================= -->
+<section class="section res-preview" id="resources-band">
+<div class="wrap res-preview-inner reveal">
+<span class="eyebrow">Homeowner Resources</span>
+<h2>Practical advice for taking better care of your home</h2>
+<p>Real lessons from roof inspections, and what homeowners can watch for.</p>
+<a class="btn btn-ghost" href="resources/why-roof-leaks-are-hard-to-find/index.html">
+      Read the article
+      <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</a>
 </div>
 </section>
 <!-- ================= REFERRAL ================= -->

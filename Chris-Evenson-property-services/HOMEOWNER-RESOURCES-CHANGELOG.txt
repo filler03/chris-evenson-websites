@@ -1,0 +1,44 @@
+HOMEOWNER RESOURCES — CHANGELOG
+Chris Evenson Property Services | Homeowner Resources section (feature branch: feature/homeowner-resources)
+
+WHAT WAS ADDED
+- New /resources/ index page (Homeowner Resources) with an accessible article card
+  (category: Roof & Gutter Maintenance; title: Why Roof Leaks Can Be So Difficult to Find;
+  excerpt; Read article link). Designed to add more articles later.
+- New /resources/why-roof-leaks-are-hard-to-find/ article page using the approved ARTICLE.md copy,
+  first-person voice, both roof-diagnosis stories, and the nuanced ending preserved.
+- "Resources" link added to desktop and mobile navigation on every existing page.
+- Restrained homepage preview band ("Practical advice for taking better care of your home")
+  linking to the article; hero and existing sections unchanged.
+- Article JSON-LD (author Chris Evenson; publisher Chris Evenson Property Services; no invented dates).
+- Both new URLs added to sitemap.xml.
+
+FILES CHANGED
+- resources/index.html                              (new)
+- resources/why-roof-leaks-are-hard-to-find/index.html (new)
+- sitemap.xml                                       (2 URLs added)
+- index.html                                        (nav link, homepage preview band + styles, nav breakpoint)
+- about.html                                        (nav link, nav breakpoint)
+- share/index.html                                  (nav link, nav breakpoint)
+- honey-do-hour/index.html                          (nav link, nav breakpoint)
+- small-home-repairs/index.html                     (nav link, nav breakpoint)
+- gutter-cleaning-exterior-maintenance/index.html   (nav link, nav breakpoint)
+- pressure-washing/index.html                       (nav link, nav breakpoint)
+- deck-maintenance-repair/index.html                (nav link, nav breakpoint)
+- deck-staining/index.html                          (nav link, nav breakpoint)
+- outdoor-projects/index.html                       (nav link, nav breakpoint)
+- preview.html                                      (local preview index: added Resources link)
+
+NOTES / QA
+- Nav now collapses to the hamburger menu at <=900px (was 640px) so the extra
+  navigation item does not overflow on tablets; other mobile styles remain at 640px.
+- Verified with a headless-Chrome pass: no horizontal overflow at 1200/1100/1024/960/900/
+  820/768/700/641/640/430/390px; exactly one H1 per page; no console/page errors.
+- All internal links resolve; canonical URLs and sitemap match /resources/ routes;
+  robots.txt unchanged (no noindex).
+- Editorial guardrails respected: ground-level observation only, no promise of free
+  or comprehensive inspections, no licensed-roofing-contractor claim, past projects
+  attributed to a former employer, uncertainty preserved.
+
+APPROVAL
+- Not published. Prepared on branch feature/homeowner-resources for Chris's review.
